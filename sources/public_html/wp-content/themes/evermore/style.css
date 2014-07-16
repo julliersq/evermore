@@ -588,6 +588,9 @@ h2.blog{
 .video {
 	margin: 4% 0;
 }
+html {
+        margin: 0 !important; 
+}
 .video iframe{
 	width: 100%;
 }
