@@ -640,14 +640,14 @@ p.para.top{
 	color: #000000;
 }
 .sidebar_txt{
-	margin-top: 16%;
+	margin-bottom: 16%;
 }
 .sidebar_txt h2{
 	line-height:1.8em;
 	font-size:1.5em;
 	color:#000000;
 	border-bottom:8px solid #3BC0C0;
-	margin: 8% 0 6%;
+	margin: 0 0 6%;
 }
 .sidebar_txt p{
 	color: #000000;
@@ -940,14 +940,14 @@ p.para.top{
 	}
 }
 
+.gform_wrapper input[type=text], .gform_wrapper input[type=url], .gform_wrapper input[type=email], .gform_wrapper input[type=tel], .gform_wrapper input[type=number], .gform_wrapper input[type=password] {
+    outline-style: none !important;
+    font-size: 16px !important;
+    font-family: 'Open Sans', sans-serif !important;
+    padding: 5px 2px 5px 2px !important;
+    letter-spacing: normal;
+}
 
-
-
-
-
-
-
-
-
-
-
+.wrap .main .contact .gform_wrapper .top_label input.medium {
+    margin-bottom: 0 !important;
+}
