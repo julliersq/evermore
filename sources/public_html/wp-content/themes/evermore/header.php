@@ -96,6 +96,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <?php
         wp_head();
         ?>
+        <style>
+        .contact .gform_wrapper .top_label input.medium, .contact .gform_wrapper .top_label textarea {
+            padding-right: 2px;
+            margin-bottom: 0;
+        }          
+        .contact .gform_wrapper textarea, .contact .gform_wrapper input[type=text], .contact .gform_wrapper input[type=url], .contact .gform_wrapper input[type=email], .contact .gform_wrapper input[type=tel], .contact .gform_wrapper input[type=number], .contact .gform_wrapper input[type=password] {
+            outline-style: none;
+            font-size: 16px;
+            font-family: 'Open Sans', sans-serif;
+            padding: 8px 2px 8px 8px;
+            letter-spacing: normal;
+        }      
+        #gform_wrapper_1{
+            margin-top: 0 !important;
+        }
+        </style>
     </head>
     <body>
         <!-- header_top -->
