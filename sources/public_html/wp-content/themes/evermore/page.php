@@ -22,7 +22,25 @@ get_header();
                 <p><?php the_field( 'page_tagline' ); ?></p>
             </div>
             <div class="main">
-                <?php echo $currentPage->post_content; ?>                    
+                <?php
+                if( get_field( 'display_sidebar' ) ){
+                ?>
+                <div class="content_left">
+                    <div class="blog_main">
+                <?php
+                }
+                echo $currentPage->post_content; 
+                if( get_field( 'display_sidebar' ) ){
+                ?>
+                    </div>
+                </div>    
+                <?php
+                }
+                if( get_field( 'display_sidebar' ) ){
+                    get_sidebar(); 
+                }
+                ?>
+                <div class="clear"></div>                
             </div>
         </div>
 <?php
