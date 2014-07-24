@@ -1,20 +1,17 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Evermore Weddings | Home </title>
+        <?php
+        $currentPage = get_queried_object();
+        ?>
+        <title><?php echo get_bloginfo( 'name' ); ?> | <?php echo $currentPage->post_title;?></title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-        <link href="<?php echo get_template_directory_uri(); ?>/css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="<?php echo get_template_directory_uri(); ?>/style.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" media="all" />
         <!-- jQuery -->
         <!-- start slider -->
-        <link href="<?php echo get_template_directory_uri(); ?>/css/camera.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="<?php echo get_template_directory_uri(); ?>/css/camera.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" media="all" />
         <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
         <script type='text/javascript' src="<?php echo get_template_directory_uri(); ?>/js/jquery.mobile.customized.min.js"></script>
         <script type='text/javascript' src="<?php echo get_template_directory_uri(); ?>/js/jquery.easing.1.3.js"></script> 
