@@ -36,38 +36,46 @@ $sliderList = array(
     ),      
 );
 
+
+
+
+
+
 get_header();
+
+
 ?>
         <?php
-        if( count($sliderList) > 0 ){
+        if( have_rows('home_page_slides') ):
         ?>        
         <!-- start slider -->
         <div class="slider">
             <div class="fluid_container">
                 <div class="camera_wrap camera_magenta_skin" id="camera_wrap_2">
                     <?php
-                    foreach($sliderList as $currentSlide){
+                    while ( have_rows('home_page_slides') ) : the_row();
+                        $currentSlide = get_sub_field('slider_image');
                     ?>
-                    <div data-thumb="<?php echo $currentSlide['thumb']; ?>" data-src="<?php echo $currentSlide['image']; ?>">
+                    <div data-thumb="<?php echo $currentSlide['sizes']['main-page-slider-thumb']; ?>" data-src="<?php echo $currentSlide['sizes']['main-page-slider-image']; ?>">
                         <div class="camera_caption fadeFromBottom">
                             <?php
-                            if( trim($currentSlide['title']) != '' ){
+                            if( trim($currentSlide['caption']) != '' ){
                             ?>
-                            <h2><?php echo $currentSlide['title']; ?></h2>
+                            <h2><?php echo $currentSlide['caption']; ?></h2>
                             <?php
                             }                           
                             ?>                            
                         </div>
                     </div>
                     <?php
-                    }
+                    endwhile;
                     ?>
                 </div><!-- #camera_wrap_2 -->
             </div><!-- .fluid_container -->
             <div class="clear"></div>
         </div>
         <?php
-        }
+        endif;
         ?>
         <!-- start main  -->
         <div class="wrap">
