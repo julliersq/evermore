@@ -34,7 +34,7 @@ img{max-width:100%;}
 body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 100%;
-	background: url('../images/main_bg.png');
+	background: url('/wp-content/themes/evermore/images/main_bg.png');
 }
 .wrap{
 	margin:0 auto;
@@ -42,7 +42,7 @@ body {
 }
 /* header */
 .header_top{
-	background: url('../images/header_top.png');
+	background: url('/wp-content/themes/evermore/images/header_top.png');
 }
 .header{
 	padding: 1% 0%;
@@ -61,31 +61,31 @@ body {
 	height: 28px;
 	width: 28px;
 	display: block;
-	background:url(../images/soc_icons.png);
+	background:url(/wp-content/themes/evermore/images/soc_icons.png);
 }
 .social-icons li:nth-child(1) a{
-	background: url(../images/soc_icons.png) 0% 0%;
+	background: url(/wp-content/themes/evermore/images/soc_icons.png) 0% 0%;
 }
 .social-icons li:nth-child(1) a:hover{
-	background: url(../images/soc_icons.png) 0% 75%;
+	background: url(/wp-content/themes/evermore/images/soc_icons.png) 0% 75%;
 }
 .social-icons li:nth-child(2) a{
-	background: url(../images/soc_icons.png) 34% 0%;
+	background: url(/wp-content/themes/evermore/images/soc_icons.png) 34% 0%;
 }
 .social-icons li:nth-child(2) a:hover{
-	background: url(../images/soc_icons.png) 34% 75%;
+	background: url(/wp-content/themes/evermore/images/soc_icons.png) 34% 75%;
 }
 .social-icons li:nth-child(3) a{
-	background: url(../images/soc_icons.png) 68% 0%;
+	background: url(/wp-content/themes/evermore/images/soc_icons.png) 68% 0%;
 }
 .social-icons li:nth-child(3) a:hover{
-	background: url(../images/soc_icons.png) 68% 75%;
+	background: url(/wp-content/themes/evermore/images/soc_icons.png) 68% 75%;
 }
 .social-icons li:nth-child(4) a{
-	background: url(../images/soc_icons.png) 100% 0%;
+	background: url(/wp-content/themes/evermore/images/soc_icons.png) 100% 0%;
 }
 .social-icons li:nth-child(4) a:hover{
-	background: url(../images/soc_icons.png) 100% 75%;
+	background: url(/wp-content/themes/evermore/images/soc_icons.png) 100% 75%;
 }
 /* header_btm */
 .header_btm{
@@ -380,7 +380,7 @@ body {
 /* start footer */
 .footer_bg{
 	border-top:8px solid #3BC0C0;
-	background:	url('../images/footer_bg.jpg');
+	background:	url('/wp-content/themes/evermore/images/footer_bg.jpg');
 	padding-top: 2%;
 }
 .footer{
@@ -445,7 +445,7 @@ body {
 	height:32px;
 	width: 32px;
 	display: block;
-	background:url(../images/soc_media.png);
+	background:url(/wp-content/themes/evermore/images/soc_media.png);
 }
 .social-media li a:hover {
 	zoom: 1;
@@ -458,64 +458,64 @@ body {
 	transition: opacity .15s ease-in-out;
 }
 .social-media li:nth-child(1) a{
-	background: url(../images/soc_media.png) 0% 0%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 0% 0%;
 }
 .social-media li:nth-child(2) a{
-	background: url(../images/soc_media.png) 14% 0%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 14% 0%;
 }
 .social-media li:nth-child(3) a{
-	background: url(../images/soc_media.png) 28% 0%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 28% 0%;
 }
 .social-media li:nth-child(4) a{
-	background: url(../images/soc_media.png) 42% 0%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 42% 0%;
 }
 .social-media li:nth-child(5) a{
-	background: url(../images/soc_media.png) 57% 0%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 57% 0%;
 }
 .social-media li:nth-child(6) a{
-	background: url(../images/soc_media.png) 72% 0%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 72% 0%;
 }
 .social-media li:nth-child(7) a{
-	background: url(../images/soc_media.png) 86% 0%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 86% 0%;
 }
 .social-media li:nth-child(8) a{
-	background: url(../images/soc_media.png) 100% 0%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 100% 0%;
 }
 .social-media li:nth-child(9) a{
-	background: url(../images/soc_media.png) 0% 50%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 0% 50%;
 }
 .social-media li:nth-child(10) a{
-	background: url(../images/soc_media.png) 14% 50%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 14% 50%;
 }
 .social-media li:nth-child(11) a{
-	background: url(../images/soc_media.png) 28% 50%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 28% 50%;
 }
 .social-media li:nth-child(12) a{
-	background: url(../images/soc_media.png) 42% 50%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 42% 50%;
 }
 .social-media li:nth-child(13) a{
-	background: url(../images/soc_media.png) 57% 50%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 57% 50%;
 }
 .social-media li:nth-child(14) a{
-	background: url(../images/soc_media.png) 72% 50%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 72% 50%;
 }
 .social-media li:nth-child(15) a{
-	background: url(../images/soc_media.png) 86% 50%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 86% 50%;
 }
 .social-media li:nth-child(16) a{
-	background: url(../images/soc_media.png) 100% 50%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 100% 50%;
 }
 .social-media li:nth-child(17) a{
-	background: url(../images/soc_media.png) 0% 100%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 0% 100%;
 }
 .social-media li:nth-child(18) a{
-	background: url(../images/soc_media.png) 14% 100%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 14% 100%;
 }
 .social-media li:nth-child(19) a{
-	background: url(../images/soc_media.png) 28% 100%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 28% 100%;
 }
 .social-media li:nth-child(20) a{
-	background: url(../images/soc_media.png) 42% 100%;
+	background: url(/wp-content/themes/evermore/images/soc_media.png) 42% 100%;
 }
 .footer_top {
 	border-top:1px solid #3a3a3a;
@@ -539,12 +539,12 @@ body {
 }
 /* start blog */
 .slider_bg{
-	background: url('../images/slider_bg.jpg');
+	background: url('/wp-content/themes/evermore/images/slider_bg.jpg');
 	padding-top: 4%;
 	height: 84px;
 }
 .blog_slider{
-	background: url('../images/blog.jpg');
+	background: url('/wp-content/themes/evermore/images/blog.jpg');
 	padding: 4% 3% 8%;
 	margin-top: -4%;
 }
@@ -641,6 +641,11 @@ p.para.top{
 }
 .sidebar_txt{
 	margin-bottom: 16%;
+}
+.blog_main h1{
+	line-height:1.8em;
+	font-size:25px;
+	color:#000000;	
 }
 .sidebar_txt h2{
 	line-height:1.8em;
@@ -950,4 +955,15 @@ p.para.top{
 
 .wrap .main .contact .gform_wrapper .top_label input.medium {
     margin-bottom: 0 !important;
+}
+
+.blog_main p{
+    margin: 10px 0;
+}
+
+.blog_main .blog_date{
+    color: #3BC0C0;
+    line-height: 1.6em;
+    margin: 0 0 15px !important;
+    font-size: 14px;
 }
