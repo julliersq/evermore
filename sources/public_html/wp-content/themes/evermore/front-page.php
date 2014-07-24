@@ -3,47 +3,11 @@
   Template Name: Front Page
  */
 
-$sliderList = array(
-    0 => array(
-        'image' => get_template_directory_uri().'/images/slider1.jpg',
-        'thumb' => get_template_directory_uri().'/images/slider_thumb1.jpg',
-        'title' => 'place your description text here.great spot to tell about deals.',
-    ),
-    1 => array(
-        'image' => get_template_directory_uri().'/images/slider2.jpg',
-        'thumb' => get_template_directory_uri().'/images/slider_thumb2.jpg',
-        'title' => 'It uses a light version of jQuery mobile, navigate the slides by swiping with your fingers',
-    ), 
-    2 => array(
-        'image' => get_template_directory_uri().'/images/slider3.jpg',
-        'thumb' => get_template_directory_uri().'/images/slider_thumb3.jpg',
-        'title' => 'It uses a light version of jQuery mobile, navigate the slides by swiping with your fingers',
-    ),     
-    3 => array(
-        'image' => get_template_directory_uri().'/images/slider4.jpg',
-        'thumb' => get_template_directory_uri().'/images/slider_thumb4.jpg',
-        'title' => 'It uses a light version of jQuery mobile, navigate the slides by swiping with your fingers',
-    ),         
-    4 => array(
-        'image' => get_template_directory_uri().'/images/slider5.jpg',
-        'thumb' => get_template_directory_uri().'/images/slider_thumb5.jpg',
-        'title' => 'It uses a light version of jQuery mobile, navigate the slides by swiping with your fingers',
-    ),  
-    5 => array(
-        'image' => get_template_directory_uri().'/images/slider6.jpg',
-        'thumb' => get_template_directory_uri().'/images/slider_thumb6.jpg',
-        'title' => 'It uses a light version of jQuery mobile, navigate the slides by swiping with your fingers',
-    ),      
-);
-
-
-
-
-
-
 get_header();
 
+$currentPage = get_queried_object();
 
+$pageID = $currentPage->ID;
 ?>
         <?php
         if( have_rows('home_page_slides') ):
@@ -55,6 +19,7 @@ get_header();
                     <?php
                     while ( have_rows('home_page_slides') ) : the_row();
                         $currentSlide = get_sub_field('slider_image');
+                        if($currentSlide){
                     ?>
                     <div data-thumb="<?php echo $currentSlide['sizes']['main-page-slider-thumb']; ?>" data-src="<?php echo $currentSlide['sizes']['main-page-slider-image']; ?>">
                         <div class="camera_caption fadeFromBottom">
@@ -68,6 +33,7 @@ get_header();
                         </div>
                     </div>
                     <?php
+                        }
                     endwhile;
                     ?>
                 </div><!-- #camera_wrap_2 -->
@@ -80,43 +46,87 @@ get_header();
         <!-- start main  -->
         <div class="wrap">
             <div class="main">
+                <div><?php echo $currentPage->post_content; ?></div>
+                <?php                
+                if( get_field( 'home_page_enable_three_col') && get_field('column_1_text') ){
+                ?>
                 <!-- start grids_1_of_3  -->
                 <div class="grids_1_of_3">
                     <div class="grid_1_of_3 images_1_of_3">
-                        <div class="grid3_img">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/icon1.png" alt=""/>
-                        </div>
+                        <?php
+                        if( get_field('column_1_title') ){
+                        ?>
                         <div class="grid3_txt">
-                            <h3>awesome sliders </h3>
-                        </div>
+                            <h3><?php the_field('column_1_title'); ?></h3>
+                        </div>                        
                         <div class="clear"></div>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, </p>
+                        <?php
+                        }
+                        if( get_field('column_1_text') ){
+                        ?>
+                        <p><?php the_field('column_1_text'); ?></p>
+                        <?php
+                        }
+                        ?>
                     </div>
+                    <?php
+                    if( get_field('column_2_text') ){
+                    ?>                    
                     <div class="grid_1_of_3 images_1_of_3">
-                        <div class="grid3_img">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/icon2.png" alt=""/>
-                        </div>
+                        <?php
+                        if( get_field('column_2_title') ){
+                        ?>                        
                         <div class="grid3_txt">
-                            <h3>modern theme</h3>
+                            <h3><?php the_field('column_2_title'); ?></h3>
                         </div>
                         <div class="clear"></div>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, </p>
+                        <?php
+                        }
+                        if( get_field('column_2_text') ){
+                        ?>
+                        <p><?php the_field('column_2_text'); ?></p>
+                        <?php
+                        }
+                        ?>
                     </div>
-                    <div class="grid_1_of_3 images_1_of_3 hide">
-                        <div class="grid3_img">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/icon3.png" alt=""/>
-                        </div>
+                    <?php
+                    }
+                    if( get_field('column_3_text') ){
+                    ?>                    
+                    <div class="grid_1_of_3 images_1_of_3">
+                        <?php
+                        if( get_field('column_3_title') ){
+                        ?>                        
                         <div class="grid3_txt">
-                            <h3>customize it</h3>
+                            <h3><?php the_field('column_3_title'); ?></h3>
                         </div>
                         <div class="clear"></div>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, </p>
+                        <?php
+                        }
+                        if( get_field('column_3_text') ){
+                        ?>
+                        <p><?php the_field('column_3_text'); ?></p>
+                        <?php
+                        }
+                        ?>
                     </div>
+                    <?php
+                    }                    
+                    ?>
                     <div class="clear"></div>
                 </div>
+                <?php
+                }
+                ?>
                 <!-- start main_btm -->
-                <div class="main_btm">
-                    <h2>make an&nbsp;<span> impression </span>&nbsp; that shines</h2>
+                <div class="main_btm">                    
+                    <?php
+                    if( get_field('home_page_tag_line') ){
+                    ?>
+                    <h2><?php the_field('home_page_tag_line'); ?></h2>
+                    <?php
+                    }
+                    ?>                    
                     <!---start-mfp ---->	
                     <div id="small-dialog1" class="mfp-hide">
                         <div class="pop_up">
