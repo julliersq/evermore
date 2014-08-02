@@ -20,7 +20,7 @@
                             <?php
                             foreach($categoryList as $currentCat){
                             ?>
-                            <li><a href="<?php echo $currentCat->slug; ?>"><?php echo $currentCat->name.' ('.$currentCat->count.')'; ?></a></li>
+                            <li><a href="/categories/<?php echo $currentCat->slug; ?>"><?php echo $currentCat->name.' ('.$currentCat->count.')'; ?></a></li>
                             <?php
                             }
                             ?>
