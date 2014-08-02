@@ -59,7 +59,7 @@ body {
 	width: 28px;
 	display: block;
 	background:url(../images/soc_icons.png);
-}
+}/*
 .social-icons li:nth-child(1) a{
 	background: url(../images/soc_icons.png) 0% 0%;
 }
@@ -83,7 +83,7 @@ body {
 }
 .social-icons li:nth-child(4) a:hover{
 	background: url(../images/soc_icons.png) 100% 75%;
-}
+}*/
 /* header_btm */
 .header_btm{
 	background:#fdfdfd;

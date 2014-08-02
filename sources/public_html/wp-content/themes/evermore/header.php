@@ -108,6 +108,24 @@
         #gform_wrapper_1{
             margin-top: 0 !important;
         }
+        .header_top .wrap .social-icons li.rss a{
+            background: url(/wp-content/themes/evermore/images/soc_icons.png) 100% 0%;
+        }
+        .header_top .wrap .social-icons li.rss  a:hover{
+            background: url(/wp-content/themes/evermore/images/soc_icons.png) 100% 75%;
+        }  
+        .header_top .wrap .social-icons li.facebook a{
+            background: url(/wp-content/themes/evermore/images/soc_icons.png) 34% 0%;
+        }
+        .header_top .wrap .social-icons li.facebook a:hover{
+            background: url(/wp-content/themes/evermore/images/soc_icons.png) 34% 75%;
+        }          
+        .header_top .wrap .social-icons li.twitter a{
+            background: url(/wp-content/themes/evermore/images/soc_icons.png) 0% 0%;
+        }
+        .header_top .wrap .social-icons li.twitter a:hover{
+            background: url(/wp-content/themes/evermore/images/soc_icons.png) 0% 75%;
+        }                  
         </style>
     </head>
     <body>
@@ -116,12 +134,24 @@
             <div class="wrap">
                 <div class="header">
                     <div class="social-icons">
+                        <?php
+                        if( get_field('social-media-header-check') && have_rows('social-media-header-box') ):
+                        ?>                                
                         <ul>
-                            <li><a href="#" target="_blank"></a></li>
-                            <li><a href="#" target="_blank"></a></li>
-                            <li><a href="#" target="_blank"></a></li>
-                            <li><a href="#" target="_blank"></a></li>
+                            <?php
+                            while ( have_rows('social-media-header-box') ) : the_row();
+                                $socialMediaType = get_sub_field('social_media_header_select');                                                                                                
+                                $socialMediaLink = get_sub_field('social_media_header_link');
+                            ?>                            
+                            <li class="<?php echo $socialMediaType; ?>"><a href="<?php echo $socialMediaLink; ?>" target="_blank"></a></li>
+                            <?php
+                            endwhile;
+                            ?>
+                            <li class="rss"><a href="<?php bloginfo('rss2_url'); ?>" target="_blank"></a></li>
                         </ul>
+                        <?php
+                        endif;
+                        ?>
                     </div>
                     <div class="clear"></div>
                 </div>
@@ -135,12 +165,18 @@
                         <a href="index.html"><img src="<?php echo get_template_directory_uri(); ?>/images/header_logo.png" alt=""/> </a>
                     </div>
                     <div class="menu">
+                        <?php wp_nav_menu( array( 'theme_location' => 'header-menu' , 'container' => false ) ); ?>
+                        <?php
+                        /*
                         <ul>
                             <li class="active"><a href="index.html">Home</a></li>
                             <li><a href="blog.html">Blog</a></li>
                             <li><a href="portfolio.html">Portfolio</a></li>
                             <li><a href="contact.html">Contact</a></li>
                         </ul>
+                         * 
+                         */
+                        ?>
                     </div>
                     <div class="clear"></div>
                 </div>
