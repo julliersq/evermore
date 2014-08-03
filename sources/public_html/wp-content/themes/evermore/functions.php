@@ -57,4 +57,92 @@ function register_my_menu() {
 
 add_action('init', 'register_my_menu');
 
+
+function home_page_add_meta_box($post) {
+    if( $post->ID == 71 ){
+        add_meta_box( 'evermore_home_page_gallery', 'Home Page Galleries', 'print_homepage_gallery_metabox', 'page', 'normal' );
+    }
+}
+add_action( 'add_meta_boxes_page', 'home_page_add_meta_box' );
+
+
+function print_homepage_gallery_metabox(){
+    global $wpdb;
+    
+    //get all galleries from database
+    $allGalleries = $wpdb->get_results( 
+            "SELECT * FROM wp_ngg_gallery"
+            , ARRAY_A );
+    //echo '$allGalleries is '.print_r($allGalleries, true);
+?>
+<script type="text/javascript">
+function removeHomePageGalleryItem(listItemNumber){    
+    jQuery('#evermore-home-page-gallery-table #home-page-gallery-item-'+listItemNumber).remove();
+    //change the names of each
+    var counter = 1;
+    jQuery('#evermore-home-page-gallery-table .home-page-gallery-item').each( function(index, element){
+        var currentId = this.id;
+        jQuery('#'+currentId+' .home-page-gallery-items').attr('id', 'home-page-gallery-item-'+counter);
+        
+        jQuery('#'+currentId+' .gallery_labels').attr('for', 'gallery_label_'+counter);
+        jQuery('#'+currentId+' .home_page_gallery_labels').attr('name', 'gallery['+counter+'][label]');
+        jQuery('#'+currentId+' .gallery_labels').attr('id', 'home_page_gallery_label_'+counter);
+        
+        jQuery('#'+currentId+' .gallery_id_labels').attr('for', 'home_page_gallery_id_'+counter);
+        jQuery('#'+currentId+' select.home_page_gallery_ids').attr('name', 'gallery['+counter+'][id]');
+        jQuery('#'+currentId+' select.home_page_gallery_ids').attr('id', 'home_page_gallery_id_'+counter);
+                
+        $(this).attr('id', 'home-page-gallery-item-'+counter);
+        counter++;
+    });
+}
+function addHomePageGalleryItem(){
+    //get the number of current items
+    var totalItems = jQuery('#evermore-home-page-gallery-table .home-page-gallery-items').length;    
+    var nextItemNumber = totalItems+1;
+    jQuery('#evermore-home-page-gallery-table').append('    <tr class="home-page-gallery-items" id="home-page-gallery-item-'+nextItemNumber+'"></tr>');
+    
+    jQuery('#evermore-home-page-gallery-table #home-page-gallery-item-'+nextItemNumber).append('        <th><label class="gallery_labels" for="gallery_label_'+nextItemNumber+'">Tab Label</label> <input  class="home_page_gallery_labels" type="text" name="gallery['+nextItemNumber+'][label]" id="home_page_gallery_label_'+nextItemNumber+'" value="" /></th>');
+    jQuery('#evermore-home-page-gallery-table #home-page-gallery-item-'+nextItemNumber).append('        <td><label class="gallery_id_labels" for="home_page_gallery_id_'+nextItemNumber+'">Select Gallery</label></td>');
+    jQuery('#evermore-home-page-gallery-table #home_page_gallery_id_1').clone().appendTo(jQuery('#evermore-home-page-gallery-table #home-page-gallery-item-'+nextItemNumber+' td') );
+    jQuery('#evermore-home-page-gallery-table #home-page-gallery-item-'+nextItemNumber+' td select').attr('name', 'gallery['+nextItemNumber+'][id]');
+    jQuery('#evermore-home-page-gallery-table #home-page-gallery-item-'+nextItemNumber+' td select').attr('id', 'home_page_gallery_id_'+nextItemNumber);
+    jQuery('#evermore-home-page-gallery-table #home-page-gallery-item-'+nextItemNumber).append('<td><input type="button" onclick="removeHomePageGalleryItem('+nextItemNumber+');" value="Remove" /></td>');
+    
+    if( nextItemNumber >= 5 ){
+        jQuery('#home_page_gallery_add_item').hide();
+    }
+}
+</script>
+<p>Select the galleries you would like to add to the homepage. You can add up to 5 galleries.</p>
+<table id="evermore-home-page-gallery-table">
+    <tr class="home-page-gallery-items" id="home-page-gallery-item-1">
+        <th>
+            <label class="gallery_labels" for="gallery_label_1">Tab Label</label> <input  class="home_page_gallery_labels" type="text" name="gallery[1][label]" id="home_page_gallery_label_1" value="" />
+        </th>
+        <td>
+            <label class="gallery_id_labels" for="home_page_gallery_id_1">Select Gallery</label>
+            <select class="home_page_gallery_ids" id="home_page_gallery_id_1" name="gallery[1][id]" class="home_page_gallery_ids">
+                <?php
+                foreach($allGalleries as $currentGallery){
+                    echo '<option value="'.$currentGallery['gid'].'">'.$currentGallery['title'].'</option>';
+                }
+                ?>        
+            </select>            
+        </td>
+        <td><input type="button" onclick="removeHomePageGalleryItem(1);" value="Remove" /></td>
+    </tr>
+</table>
+<input type="button" id="home_page_gallery_add_item" value="Add another gallery" onclick="addHomePageGalleryItem();"/>
+<?php
+}
+
+add_action( 'save_post', 'save_homepage_galleries' );
+
+function save_homepage_galleries($postId){
+    if( $postId == 71 ){
+        
+    }
+}
+
 ?>

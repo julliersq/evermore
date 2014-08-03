@@ -453,7 +453,7 @@ body {
 	-ms-transition: opacity .15s ease-in-out;
 	-o-transition: opacity .15s ease-in-out;
 	transition: opacity .15s ease-in-out;
-}
+}/*
 .social-media li:nth-child(1) a{
 	background: url(../images/soc_media.png) 0% 0%;
 }
@@ -513,7 +513,7 @@ body {
 }
 .social-media li:nth-child(20) a{
 	background: url(../images/soc_media.png) 42% 100%;
-}
+}*/
 .footer_top {
 	border-top:1px solid #3a3a3a;
 	padding:4% 0 0;

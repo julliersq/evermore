@@ -46,28 +46,25 @@
                         <div class="span_1_of_3">
                             <h2>social media</h2>
                             <div class="social-media">
-                                <ul>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                    <li><a href="#" target="_blank"></a></li>
-                                </ul>
+                            <?php
+                            if( get_field('display_social_media_links_on_footer', 40) && have_rows('display_social_media_links_on_footer_box', 40) ):
+                            ?>                                
+                            <ul>
+                                <li class="rss"><a href="<?php bloginfo('rss2_url'); ?>" target="_blank"></a></li>
+                                <?php
+                                while ( have_rows('display_social_media_links_on_footer_box', 40) ) : the_row();
+                                    $socialMediaType = get_sub_field('social_media_footer_select', 40);                                                                                                
+                                    $socialMediaLink = get_sub_field('social_media_footer_link', 40);
+                                ?>                            
+                                <li class="<?php echo $socialMediaType; ?>"><a href="<?php echo $socialMediaLink; ?>" target="_blank"></a></li>
+                                <?php
+                                endwhile;
+                                ?>
+                                
+                            </ul>
+                            <?php
+                            endif;
+                            ?>
                             </div>
                         </div>
                         <div class="clear"></div>

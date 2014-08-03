@@ -445,9 +445,8 @@ body {
 .social-media li a {
 	height:32px;
 	width: 32px;
-	display: block;
-	background:url(/wp-content/themes/evermore/images/soc_media.png);
-}
+	display: block;	
+}/*
 .social-media li a:hover {
 	zoom: 1;
 	filter: alpha(opacity=50);
@@ -517,7 +516,7 @@ body {
 }
 .social-media li:nth-child(20) a{
 	background: url(/wp-content/themes/evermore/images/soc_media.png) 42% 100%;
-}
+}*/
 .footer_top {
 	border-top:1px solid #3a3a3a;
 	padding:4% 0 0;
