@@ -107,31 +107,45 @@ $pageID = $currentPage->ID;
                     <!---end-mfp ---->	
                     <!---start-content----->
                     <div class="gallery">
+                        <?php
+                        $homePageGalleries = json_decode(get_post_meta( 71, 'home_page_galleries', true ), true);
+                        $galleryDisplay = array();
+                        $galleryCounter = 0;
+                        $allClassesArray = array();
+                        foreach($homePageGalleries as $currentGallerySaved){
+                            $galleryDisplay[$galleryCounter]['class'] = 'galleryClass'.$currentGallerySaved['id'];
+                            $allClassesArray[] = 'galleryClass'.$currentGallerySaved['id'];
+                            $galleryDisplay[$galleryCounter]['label'] = $currentGallerySaved['label'];
+                            $galleryDisplay[$galleryCounter]['id'] = $currentGallerySaved['id'];
+                            $galleryCounter++;
+                        }
+                        $allClassesString = implode(' ', $allClassesArray);
+                        ?>                        
                         <div class="clear"> </div>
                         <div class="container">
                             <ul id="filters" class="clearfix">
-                                <li><span class="filter active" data-filter="birthday weddings events">All</span></li>
-                                <li><span class="filter" data-filter="birthday">Birthdays</span></li>
-                                <li><span class="filter" data-filter="weddings">Weddings</span></li>
-                                <li><span class="filter" data-filter="events">Events</span></li>
-                                
+
+                                <li><span class="filter active" data-filter="<?php echo $allClassesString; ?>">All</span></li>
+                                <?php
+                                foreach($galleryDisplay as $currentDisplay){
+                                ?>
+                                <li><span class="filter" data-filter="<?php echo $currentDisplay['class']; ?>"><?php echo $currentDisplay['label']; ?></span></li>
+                                <?php
+                                }
+                                ?>
                             </ul>
                             <div id="portfoliolist">
-                                <div class="portfolio birthday" data-cat="birthday">
+                                <?php
+                                foreach($galleryDisplay as $currentDisplay){
+                                ?>
+                                <div class="portfolio <?php echo $currentDisplay['class']; ?>" data-cat="<?php echo $currentDisplay['class']; ?>">
                                     <div class="portfolio-wrapper">				
-                                        <?php echo do_shortcode('[ngg_images gallery_ids="2" display_type="photocrati-nextgen_basic_thumbnails" number_of_columns="4"]'); ?>
+                                        <?php echo do_shortcode('[ngg_images gallery_ids="'.$currentDisplay['id'].'" display_type="photocrati-nextgen_basic_thumbnails" number_of_columns="4"]'); ?>
                                     </div>
-                                </div>				
-                                <div class="portfolio weddings" data-cat="weddings">
-                                    <div class="portfolio-wrapper">			
-                                        <?php echo do_shortcode('[ngg_images gallery_ids="3" display_type="photocrati-nextgen_basic_thumbnails" number_of_columns="4"]'); ?>
-                                    </div>
-                                </div>		
-                                <div class="portfolio events" data-cat="events">
-                                    <div class="portfolio-wrapper">						
-                                        <?php echo do_shortcode('[ngg_images gallery_ids="4" display_type="photocrati-nextgen_basic_thumbnails" number_of_columns="4"]'); ?>
-                                    </div>
-                                </div>				
+                                </div>				                                
+                                <?php
+                                }
+                                ?>                                			
                             </div>
                         </div><!-- container -->
                         <div class="clear"> </div>

@@ -1,4 +1,5 @@
 <?php
+/*
 if ( !is_user_logged_in() ) {
     ?>
 
@@ -71,6 +72,8 @@ if ( !is_user_logged_in() ) {
     <?php
     exit;
 }
+ * 
+ */
 ?><!DOCTYPE HTML>
 <html>
     <head>
@@ -89,6 +92,8 @@ if ( !is_user_logged_in() ) {
         <script type='text/javascript' src="<?php echo get_template_directory_uri(); ?>/js/jquery.mobile.customized.min.js"></script>
         <script type='text/javascript' src="<?php echo get_template_directory_uri(); ?>/js/jquery.easing.1.3.js"></script> 
         <!-- end slider -->
+        <link href="/wp-content/plugins/gc-testimonials/assets/css/gctwidget.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" media="all" />
+        <link href="/wp-content/plugins/gc-testimonials/assets/css/gctestimonial.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css" media="all" />
         <!-- start gallery -->
         <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.easing.min.js"></script>	
         <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.mixitup.min.js"></script>

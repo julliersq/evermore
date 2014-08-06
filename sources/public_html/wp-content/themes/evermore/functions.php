@@ -5,6 +5,26 @@ add_image_size( 'main-page-slider-image', 1663, 832, false );
 add_image_size( 'main-page-slider-thumb', 100, 80, true );
 add_image_size( 'main-page-gallery', 280, 163, true );
 
+
+add_action('load-themes.php', 'Init_theme');
+
+function Init_theme() {
+    global $pagenow,$wp_roles;    
+
+    if ('themes.php' == $pagenow && isset($_GET['activated'])) { // Test if theme is activate
+ 
+        if ( ! isset( $wp_roles ) )
+            $wp_roles = new WP_Roles();
+
+        $editor = $wp_roles->get_role('administrator');
+        //Adding a 'new_role' with all admin caps
+        $wp_roles->add_role('siteowner', 'Site Owner', $editor->capabilities);
+
+    }
+}
+ 
+//remove_role( 'siteowner' );
+
 function evermore_format_string($string, $hasHTML = false, $listToCsv = false, $maxChar = -1, $end = '... ') {
 
     //list to csv
@@ -115,23 +135,38 @@ function addHomePageGalleryItem(){
 }
 </script>
 <p>Select the galleries you would like to add to the homepage. You can add up to 5 galleries.</p>
+<?php
+$homePageGalleries = json_decode(get_post_meta( 71, 'home_page_galleries', true ), true);
+?>
 <table id="evermore-home-page-gallery-table">
-    <tr class="home-page-gallery-items" id="home-page-gallery-item-1">
+    <?php
+    $galleryCounter = 1;
+    foreach($homePageGalleries as $currentGallerySaved){
+    ?>
+    <tr class="home-page-gallery-items" id="home-page-gallery-item-<?php echo $galleryCounter; ?>">
         <th>
-            <label class="gallery_labels" for="gallery_label_1">Tab Label</label> <input  class="home_page_gallery_labels" type="text" name="gallery[1][label]" id="home_page_gallery_label_1" value="" />
+            <label class="gallery_labels" for="gallery_label_<?php echo $galleryCounter; ?>">Tab Label</label> <input  class="home_page_gallery_labels" type="text" name="gallery[<?php echo $galleryCounter; ?>][label]" id="home_page_gallery_label_<?php echo $galleryCounter; ?>" value="<?php echo $currentGallerySaved['label']; ?>" />
         </th>
         <td>
-            <label class="gallery_id_labels" for="home_page_gallery_id_1">Select Gallery</label>
-            <select class="home_page_gallery_ids" id="home_page_gallery_id_1" name="gallery[1][id]" class="home_page_gallery_ids">
+            <label class="gallery_id_labels" for="home_page_gallery_id_<?php echo $galleryCounter; ?>">Select Gallery</label>
+            <select class="home_page_gallery_ids" id="home_page_gallery_id_<?php echo $galleryCounter; ?>" name="gallery[<?php echo $galleryCounter; ?>][id]" class="home_page_gallery_ids">
                 <?php
                 foreach($allGalleries as $currentGallery){
-                    echo '<option value="'.$currentGallery['gid'].'">'.$currentGallery['title'].'</option>';
+                    echo '<option value="'.$currentGallery['gid'].'"';
+                    if( $currentGallery['gid'] == $currentGallerySaved['id'] ){
+                        echo ' selected="selected" ';
+                    }
+                    echo '>'.$currentGallery['title'].'</option>';
                 }
                 ?>        
             </select>            
         </td>
-        <td><input type="button" onclick="removeHomePageGalleryItem(1);" value="Remove" /></td>
-    </tr>
+        <td><input type="button" onclick="removeHomePageGalleryItem(<?php echo $galleryCounter; ?>);" value="Remove" /></td>
+    </tr>    
+    <?php
+        $galleryCounter++;
+    }
+    ?>   
 </table>
 <input type="button" id="home_page_gallery_add_item" value="Add another gallery" onclick="addHomePageGalleryItem();"/>
 <?php
@@ -140,9 +175,23 @@ function addHomePageGalleryItem(){
 add_action( 'save_post', 'save_homepage_galleries' );
 
 function save_homepage_galleries($postId){
-    if( $postId == 71 ){
+    $homePageGalleries = array();
+    if( $postId == 71 && isset($_POST['gallery']) ){
+        $galleryCounter = 0;
+        foreach($_POST['gallery'] as $currentGallery){
+            $homePageGalleries[$galleryCounter]['label'] = $currentGallery['label'];
+            $homePageGalleries[$galleryCounter]['id'] = $currentGallery['id'];
+            $galleryCounter++;
+        }
+        if( count($homePageGalleries) > 0 ){
+            update_post_meta($postId, 'home_page_galleries', json_encode($homePageGalleries) );
+        }
         
     }
 }
 
+function my_dequeue_styles() {
+	wp_dequeue_style( 'gctwidgetstyles' );
+}
+add_action( 'wp_enqueue_scripts', 'my_dequeue_styles', 99 );
 ?>

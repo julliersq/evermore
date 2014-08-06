@@ -28,21 +28,27 @@
                     </div>
                     <?php
                     }
-                    /*
+                    
+                    $currentPage = get_queried_object();
+
+                    $pageID = $currentPage->ID; 
+                    $args = array( 
+                            'post_type' => 'testimonial',
+                            'post_status' => 'publish',
+                        );
+                    $testimonials = new WP_Query( $args );                    
+                    $count_posts = $testimonials->post_count;
+                    
+                    if($pageID != 209 && $count_posts > 0){
                     ?>                        
                     <div class="sidebar_txt">
-                        <h2>Advertisements</h2>
-                        <ul class="blog_list">
-                            <li class="right"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/advertise1.jpg" alt=""/> </a></li>
-                            <li class="right"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/advertise2.jpg" alt=""/> </a></li>
-                            <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/advertise3.jpg" alt=""/> </a></li>
-                            <li class="right"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/advertise3.jpg" alt=""/> </a></li>
-                            <li class="right"><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/advertise2.jpg" alt=""/> </a></li>
-                            <li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/advertise1.jpg" alt=""/> </a></li>
-                            <div class="clear"></div>
-                        </ul>
+                        <h2>Testimonials</h2>
+                        <?php
+                        echo do_shortcode('[random-testimonial limit="1"]');  
+                        ?>
                     </div>
-                     * 
-                     */
+                    <?php
+                    }
+                    
                     ?>
                 </div>

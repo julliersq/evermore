@@ -2,6 +2,7 @@
 
 //$_SERVER['REMOTE_ADDR'] != '50.71.138.105' && 
 //$_SERVER['REMOTE_ADDR'] != '50.72.80.54'
+/*
 if ( !is_user_logged_in() ) {
     ?>
 
@@ -77,4 +78,7 @@ if ( !is_user_logged_in() ) {
 else{
     header ('location: /home');
 }
+ * 
+ */
+  header ('location: /home');
 ?>
